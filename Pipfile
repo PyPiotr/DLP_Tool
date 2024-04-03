@@ -11,6 +11,7 @@ django-cors-headers = "*"
 install = "*"
 slack-bolt = "*"
 boto3 = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
