@@ -135,4 +135,16 @@ AUTH_USER_MODEL = "core.User"
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", None)
 SLACK_SIGNING_SECRET = os.environ.get("SLACK_SIGNING_SECRET", None)
 
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", ".ngrok.io", "django"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    "127.0.0.1",
+    ".ngrok-free.app",
+    "django",
+]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", None)
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", None)
+AWS_QUEUE = os.environ.get("AWS_QUEUE", None)
+AWS_QUEUE_REGION = os.environ.get("AWS_QUEUE_REGION", None)
