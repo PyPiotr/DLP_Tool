@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "core",
     "slack_app",
+    "dlp_app",
 ]
 
 MIDDLEWARE = [
