@@ -10,7 +10,7 @@ RUN pip3 install pipenv
 COPY Pipfile* ./
 RUN pipenv install
 COPY . . 
-RUN chmod +x ./start.sh
+RUN chmod +x ./start.sh ./wait-for
 EXPOSE 8000
 
 
