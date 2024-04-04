@@ -1,6 +1,8 @@
 import logging
 from slack_bolt import App
 from django.conf import settings
+from slack_app.models import Queue
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +15,18 @@ app = App(
 )
 
 
+def send_msg_to_sqs(message):
+    queue_instance, created = Queue.objects.get_or_create(
+        name=settings.AWS_QUEUE, region=settings.AWS_QUEUE_REGION
+    )
+    queue = queue_instance.get_aws_queue()
+    response = queue.send_message(MessageBody=message)
+    print(response)
+    return response
+
+
 @app.event("app_mention")
 def handle_app_mentions(logger, event, say):
     logger.info(event)
     say(f"Hi there, <@{event['user']}>")
+    send_msg_to_sqs(json.dumps(event))
