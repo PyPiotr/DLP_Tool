@@ -12,6 +12,8 @@ install = "*"
 slack-bolt = "*"
 boto3 = "*"
 python-dotenv = "*"
+gunicorn = "*"
+uvicorn = "*"
 
 [dev-packages]
 
