@@ -22,5 +22,15 @@ services:
     ports:
       - 3307:3306
 
+  dpl:
+    build:
+      context: .
+      dockerfile: ./in_house_dlp/Dockerfile
+    depends_on:
+      - backend
+    env_file:
+      - ./.env
+    command: pipenv run python ./in_house_dlp/manager.py
+
 volumes:
   dlp_db:
