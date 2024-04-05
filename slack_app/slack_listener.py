@@ -25,6 +25,13 @@ def send_msg_to_sqs(message):
     return response
 
 
+@app.event("message")
+def handle_app_messages(logger, event, ack, say):
+    logger.info(event)
+    ack()
+    send_msg_to_sqs(json.dumps(event))
+
+
 @app.event("app_mention")
 def handle_app_mentions(logger, event, say):
     logger.info(event)
